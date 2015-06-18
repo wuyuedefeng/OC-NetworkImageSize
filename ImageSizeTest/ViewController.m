@@ -7,10 +7,7 @@
 //
 
 #import "ViewController.h"
-
-NSString *const kPngRangeValue = @"bytes=16-23";
-NSString *const kJpgRangeValue = @"bytes=0-209";
-NSString *const kGifRangeValue = @"bytes=6-9";
+#import "UIImage+itdCategory.h"
 typedef NS_ENUM(NSUInteger, ImageType) {
     PngImage = 1,
     JpgImage,
@@ -19,7 +16,7 @@ typedef NS_ENUM(NSUInteger, ImageType) {
 
 @interface ViewController ()
 {
-    NSMutableURLRequest *request;
+    
 }
 @property (strong, nonatomic) NSMutableData *recieveData;
 
@@ -44,8 +41,8 @@ typedef NS_ENUM(NSUInteger, ImageType) {
 - (CGSize)downloadJPGImageSize
 {
     NSString *URLString = @"http://ww3.sinaimg.cn/thumbnail/673c0421jw1e9a6au7h5kj218g0rsn23.jpg";
-    request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
-    [request setValue:kJpgRangeValue forHTTPHeaderField:@"Range"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
+    [request setValue:@"bytes=0-209" forHTTPHeaderField:@"Range"];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
     if ([data length] <= 0x58) {
@@ -97,8 +94,8 @@ typedef NS_ENUM(NSUInteger, ImageType) {
 - (CGSize)downloadPngImageSize
 {
     NSString *URLString = @"http://d.lanrentuku.com/down/png/1506/9shouhui-website/google.png";
-    request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
-    [request setValue:kPngRangeValue forHTTPHeaderField:@"Range"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
+    [request setValue:@"bytes=16-23" forHTTPHeaderField:@"Range"];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     if(data.length == 8)
     {
@@ -122,8 +119,8 @@ typedef NS_ENUM(NSUInteger, ImageType) {
 - (CGSize)downloadGIFImageSize
 {
     NSString *URLString = @"http://s1.dwstatic.com/group1/M00/F7/5A/d881ba7b4644bbaa89adff4d0e3094cf.gif";
-    request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
-    [request setValue:kGifRangeValue forHTTPHeaderField:@"Range"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
+    [request setValue:@"bytes=6-9" forHTTPHeaderField:@"Range"];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     if(data.length == 4)
     {

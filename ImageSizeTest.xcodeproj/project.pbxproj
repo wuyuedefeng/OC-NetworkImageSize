@@ -14,6 +14,7 @@
 		4B3D54751B32A6D2001B348D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B3D54741B32A6D2001B348D /* Images.xcassets */; };
 		4B3D54781B32A6D2001B348D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3D54761B32A6D2001B348D /* LaunchScreen.xib */; };
 		4B3D548E1B32A6E5001B348D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3D548D1B32A6E5001B348D /* CFNetwork.framework */; };
+		4B3D54941B32C44E001B348D /* UIImage+itdCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D54931B32C44E001B348D /* UIImage+itdCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		4B3D54821B32A6D2001B348D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B3D54831B32A6D2001B348D /* ImageSizeTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageSizeTestTests.m; sourceTree = "<group>"; };
 		4B3D548D1B32A6E5001B348D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4B3D54921B32C44E001B348D /* UIImage+itdCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+itdCategory.h"; sourceTree = "<group>"; };
+		4B3D54931B32C44E001B348D /* UIImage+itdCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+itdCategory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				4B3D54741B32A6D2001B348D /* Images.xcassets */,
 				4B3D54761B32A6D2001B348D /* LaunchScreen.xib */,
 				4B3D54671B32A6D2001B348D /* Supporting Files */,
+				4B3D54921B32C44E001B348D /* UIImage+itdCategory.h */,
+				4B3D54931B32C44E001B348D /* UIImage+itdCategory.m */,
 			);
 			path = ImageSizeTest;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				4B3D54701B32A6D2001B348D /* ViewController.m in Sources */,
 				4B3D546D1B32A6D2001B348D /* AppDelegate.m in Sources */,
 				4B3D546A1B32A6D2001B348D /* main.m in Sources */,
+				4B3D54941B32C44E001B348D /* UIImage+itdCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
