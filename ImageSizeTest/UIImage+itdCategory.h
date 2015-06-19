@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ImageSizeBlock)(CGSize size);
+
 @interface UIImage (itdCategory)
 
-- (CGSize)itd_sizeOfImageWithUrlStr:(NSString *)imgUrlStr;
++ (void)itd_sizeOfImageWithUrlStr:(NSString *)imgUrlStr sizeGetDo:(ImageSizeBlock)doBlock;
 
 @end

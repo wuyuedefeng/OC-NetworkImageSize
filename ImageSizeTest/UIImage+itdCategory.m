@@ -14,20 +14,26 @@ NSString *const kGifRangeValue = @"bytes=6-9";
 
 @implementation UIImage (itdCategory)
 
-- (CGSize)itd_sizeOfImageWithUrlStr:(NSString *)imgUrlStr{
++ (void)itd_sizeOfImageWithUrlStr:(NSString *)imgUrlStr sizeGetDo:(ImageSizeBlock)doBlock
+{
     NSString *extensionStr = [[imgUrlStr pathExtension] lowercaseString];
+    CGSize imgSize = CGSizeZero;
     if ([extensionStr isEqualToString:@"png"]) {
-        return [self size_downloadPNGImageWithUrlString:imgUrlStr];
+        imgSize = [UIImage size_downloadPNGImageWithUrlString:imgUrlStr];
     }else if ([extensionStr isEqualToString:@"gif"])
     {
-        return [self size_downloadGIFImageWithUrlString:imgUrlStr];
+         imgSize = [UIImage size_downloadGIFImageWithUrlString:imgUrlStr];
     }else{
-        return [self size_downloadJPGImageWithUrlString:imgUrlStr];
+        imgSize = [UIImage size_downloadJPGImageWithUrlString:imgUrlStr];
     }
-    return CGSizeZero;
+    
+    if (doBlock) {
+        doBlock(imgSize);
+    }
+    return ;
 }
 
-- (CGSize)size_downloadJPGImageWithUrlString:(NSString *)urlString{
++ (CGSize)size_downloadJPGImageWithUrlString:(NSString *)urlString{
     NSString *URLString = urlString;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
     [request setValue:kJpgRangeValue forHTTPHeaderField:@"Range"];
@@ -79,8 +85,7 @@ NSString *const kGifRangeValue = @"bytes=6-9";
     }
 }
 
-- (CGSize)size_downloadPNGImageWithUrlString:(NSString *)urlString
-{
++ (CGSize)size_downloadPNGImageWithUrlString:(NSString *)urlString{
     NSString *URLString = urlString;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
     [request setValue:kPngRangeValue forHTTPHeaderField:@"Range"];
@@ -105,8 +110,7 @@ NSString *const kGifRangeValue = @"bytes=6-9";
     return CGSizeZero;
 }
 
-- (CGSize)size_downloadGIFImageWithUrlString:(NSString *)urlString
-{
++ (CGSize)size_downloadGIFImageWithUrlString:(NSString *)urlString{
     NSString *URLString = urlString;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
     [request setValue:kGifRangeValue forHTTPHeaderField:@"Range"];
